@@ -1,0 +1,3 @@
+[submodule "percona-server"]
+	path = percona-server
+	url = https://github.com/PokemonWei/percona-server.git
