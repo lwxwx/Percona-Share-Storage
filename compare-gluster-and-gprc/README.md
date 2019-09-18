@@ -8,14 +8,14 @@ util 是一些工具：
 ## how to run
 修改 gluster 读写文件的目录。
 ```
-	make build
+	mkdir build
 	cd build
 	cmake ../
 	make
 ```
 or 
 ```
-	make build
+	mkdir build
 	cd build
 	make
 ```
