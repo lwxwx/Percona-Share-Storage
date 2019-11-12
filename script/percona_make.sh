@@ -1,15 +1,15 @@
 # !/bin/bash
 
 
-PWD_PATH=$(pwd)
-ROOT_PATH=..
+source ./percona_build_env.sh
 
-BUILD_DIR=${ROOT_PATH}/build
-
+#echo "start make"
+#echo ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 make
 
+#echo ${PWD_PATH}
 cd ${PWD_PATH}
 
 

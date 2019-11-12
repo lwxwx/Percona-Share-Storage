@@ -1,21 +1,21 @@
 # !/bin/bash
+#echo 'export PERCONA_BUILD_PATH="$HOME/percona_build"' >> ~/.bashrc 
 
 
-PWD_PATH=$(pwd)
-ROOT_PATH=..
+source ./percona_build_env.sh
 
-# echo ${PWD_PATH}
-if [ ! -d "build" ]; then
-  mkdir ${ROOT_PATH}/build
+
+echo ${BUILD_DIR}
+if [ ! -d "$BUILD_DIR" ]; then
+  mkdir $BUILD_DIR
 else
-  echo '${ROOT_PATH}/build has created'
+  echo "${ROOT_PATH}/build has created"
 fi 
 
-BUILD_DIR=${ROOT_PATH}/build
 
 cd ${BUILD_DIR}
 
-cmake ${ROOT_PATH}/percona-server/ -DDOWNLOAD_BOOST=1  -DWITH_BOOST=${ROOT_PATH}
+cmake ${ROOT_PATH}/percona-server/ -DDOWNLOAD_BOOST=1  -DWITH_BOOST=${ROOT_PATH}/
 
 cd ${PWD_PATH}
 
