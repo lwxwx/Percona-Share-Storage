@@ -3,3 +3,5 @@
 build/
 
 boost*
+
+percona_server_impl.conf

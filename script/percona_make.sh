@@ -7,7 +7,7 @@ source ./percona_build_env.sh
 #echo ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-make
+make -j $1
 
 #echo ${PWD_PATH}
 cd ${PWD_PATH}
