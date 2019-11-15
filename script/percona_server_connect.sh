@@ -46,5 +46,6 @@ else
 fi
 
 
+echo ${BUILD_DIR}/bin/mysql -h${MYSQL_IP} -u${MYSQL_USER}  -P${MYSQL_PORT}  -p
 ${BUILD_DIR}/bin/mysql -h${MYSQL_IP} -u${MYSQL_USER}  -P${MYSQL_PORT}  -p #\'${MYSQL_PASSWD}\' 
 

@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/sh
 
 source ./percona_build_env.sh
 
@@ -22,13 +22,14 @@ if [ ! $PORT ]
     PORT=9898
 fi
 
+PORT=$(echo $PORT)
 
-sed -i "s/port=.*$/port=${PORT}/g" ${CONF_FILE_PATH}
-sed -i "s%socket=.*$%socket=${OUTPUT_DIR}/data/percona.sock%g" ${CONF_FILE_PATH} 
-sed -i "s%basedir=.*$%basedir=${BUILD_DIR}/%g" ${CONF_FILE_PATH}
-sed -i "s%datadir=.*$%datadir=${OUTPUT_DIR}/data/%g" ${CONF_FILE_PATH}
-sed -i "s%log-error=.*$%log-error=${OUTPUT_DIR}/percona_error.log%g" ${CONF_FILE_PATH}
-sed -i "s%pid-file=.*$%pid-file=${OUTPUT_DIR}/data/percona.pid%g" ${CONF_FILE_PATH}
+sed -i "s|port=.*$|port=${PORT}|g" ${CONF_FILE_PATH}
+sed -i "s|socket=.*$|socket=${OUTPUT_DIR}/data/percona.sock|g" ${CONF_FILE_PATH} 
+sed -i "s|basedir=.*$|basedir=${BUILD_DIR}/|g" ${CONF_FILE_PATH}
+sed -i "s|datadir=.*$|datadir=${OUTPUT_DIR}/data/|g" ${CONF_FILE_PATH}
+sed -i "s|log-error=.*$|log-error=${OUTPUT_DIR}/percona_error.log|g" ${CONF_FILE_PATH}
+sed -i "s|pid-file=.*$|pid-file=${OUTPUT_DIR}/data/percona.pid|g" ${CONF_FILE_PATH}
 
 
 ${BUILD_DIR}/bin/mysqld --defaults-file=${CONF_FILE_PATH}  --initialize  
