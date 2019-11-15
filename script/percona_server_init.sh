@@ -9,7 +9,7 @@ CONF_FILE_PATH=${ROOT_PATH}/percona_server_impl.conf
 
 
 OUTPUT_DIR=$1
-
+PORT=$2
 
 if [ ! $OUTPUT_DIR ]
   then
@@ -17,7 +17,13 @@ if [ ! $OUTPUT_DIR ]
     mkdir -p ${OUTPUT_DIR}
 fi
 
-sed -i "s/port=.*$/port=9898/g" ${CONF_FILE_PATH}
+if [ ! $PORT ]
+  then
+    PORT=9898
+fi
+
+
+sed -i "s/port=.*$/port=${PORT}/g" ${CONF_FILE_PATH}
 sed -i "s%socket=.*$%socket=${OUTPUT_DIR}/data/percona.sock%g" ${CONF_FILE_PATH} 
 sed -i "s%basedir=.*$%basedir=${BUILD_DIR}/%g" ${CONF_FILE_PATH}
 sed -i "s%datadir=.*$%datadir=${OUTPUT_DIR}/data/%g" ${CONF_FILE_PATH}
