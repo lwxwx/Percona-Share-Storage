@@ -3,12 +3,13 @@
 source ./percona_build_env.sh
 
 rm ${ROOT_PATH}/percona_server_impl.conf
-cp ${ROOT_PATH}/percona_server_template.conf ${ROOT_PATH}/percona_server_impl.conf
+cp ${ROOT_PATH}/script/temlate/percona_server_template.conf ${ROOT_PATH}/percona_server_impl.conf
 
 CONF_FILE_PATH=${ROOT_PATH}/percona_server_impl.conf
 
 
 OUTPUT_DIR=$1
+
 
 if [ ! $OUTPUT_DIR ]
   then
@@ -26,7 +27,4 @@ sed -i "s%pid-file=.*$%pid-file=${OUTPUT_DIR}/data/percona.pid%g" ${CONF_FILE_PA
 
 ${BUILD_DIR}/bin/mysqld --defaults-file=${CONF_FILE_PATH}  --initialize  
 
-
-${BUILD_DIR}/scripts/mysqld_safe --defaults-file=${CONF_FILE_PATH} --user=root &
- #/root/percona_build/build/bin/mysqld --defaults-file=${CONF_FILE_PATH} --user=root
 

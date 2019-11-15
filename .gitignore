@@ -5,3 +5,4 @@ build/
 boost*
 
 percona_server_impl.conf
+percona_connect_impl.json
