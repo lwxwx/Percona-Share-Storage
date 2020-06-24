@@ -2,9 +2,9 @@
  # @Author: wei
  # @Date: 2020-06-17 19:25:53
  # @LastEditors: Do not edit
- # @LastEditTime: 2020-06-17 19:58:29
+ # @LastEditTime: 2020-06-22 16:53:07
  # @Description: file content
- # @FilePath: /Percona-Share-Storage/script/percona_cmake.sh
+ # @FilePath: /percona-server/home/weixiaoxian/gitLocal/Percona-Share-Storage/script/percona_cmake.sh
 ###
 # !/bin/bash
 #echo 'export PERCONA_BUILD_PATH="$HOME/percona_build"' >> ~/.bashrc
@@ -23,7 +23,7 @@ fi
 
 cd ${BUILD_DIR}
 
-cmake ${ROOT_PATH}/percona-server/  -DDOWNLOAD_BOOST=1  -DWITH_BOOST=${ROOT_PATH}/boost_1_70_0/ -DWITHOUT_TOKUDB=1  -DWITHOUT_ROCKSDB=1 -DENABLE_DOWNLOADS=1  -DWITH_MYSQLX=OFF
+cmake ${ROOT_PATH}/percona-server/  -DDOWNLOAD_BOOST=1  -DWITH_BOOST=${ROOT_PATH}/boost_1_70_0/ -DWITHOUT_TOKUDB=1  -DWITHOUT_ROCKSDB=1 -DENABLE_DOWNLOADS=1  -DWITH_MYSQLX=OFF  -DWITH_GROUP_REPLICATION=OFF
 
 cd ${PWD_PATH}
 
