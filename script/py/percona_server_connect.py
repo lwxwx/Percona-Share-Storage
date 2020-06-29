@@ -14,7 +14,7 @@ import subprocess
 #@param config_path
 #@param node_no
 config_path = "./config.ini"
-node_no = int(sys.argv[1]);
+node_no = int(sys.argv[1]);   #命令行后面要加节点编号，从0开始
 
 cfg = ConfigParser()
 cfg.read(config_path)
@@ -33,7 +33,7 @@ mysql_passwd = mysql_cfg.get("client","password")
 # ${BUILD_DIR}/bin/mysql -h${MYSQL_IP} -u${MYSQL_USER}  -P${MYSQL_PORT}  -p
 connect_command = build_path + "/bin/mysql -h" + "127.0.0.1" + " -u" + mysql_user + " -P" + str(port+node_no) + " -p"
 
-subprocess.call("cat " + out_dir + "/percona_" + str(port+node_no) + "/percona_error.log | grep password",shell=True)
-print("ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的新密码'")
-subprocess.call(connect_command,shell=True)
+subprocess.call("cat " + out_dir + "/percona_" + str(port+node_no) + "/percona_error.log | grep password",shell=True) #从log里面把临时密码提取出来
+print("ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的新密码'") #进去之后先执行这个改一下密码
+subprocess.call(connect_command,shell=True) #登录mysql 输入临时密码 进去之后子再改密码
 
